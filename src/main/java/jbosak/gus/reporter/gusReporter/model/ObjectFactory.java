@@ -37,19 +37,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Root }
+     * Create an instance of {@link CompanyData }
      * 
      */
-    public Root createRoot() {
-        return new Root();
+    public CompanyData createCompanyData() {
+        return new CompanyData();
     }
 
     /**
-     * Create an instance of {@link Root.Dane }
+     * Create an instance of {@link CompanyData.Company }
      * 
      */
-    public Root.Dane createRootDane() {
-        return new Root.Dane();
+    public CompanyData.Company createCompanyDataCompany() {
+        return new CompanyData.Company();
     }
 
 }

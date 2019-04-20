@@ -5,7 +5,7 @@
 // Generated on: 2019.04.20 at 02:29:57 PM CEST
 //
 
-package jbosak.gus.reporter.gusReporter;
+package jbosak.gus.reporter.gusReporter.model;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -60,7 +60,7 @@ import javax.xml.bind.annotation.XmlType;
 public class CompanyData {
 
     @XmlElement(required = true)
-    protected Company dane;
+    public Company dane;
 
     /**
      * Gets the value of the dane property.
