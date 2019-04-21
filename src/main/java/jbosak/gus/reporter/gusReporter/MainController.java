@@ -3,23 +3,23 @@ package jbosak.gus.reporter.gusReporter;
 import jbosak.gus.reporter.gusReporter.model.CompanyData;
 import jbosak.gus.reporter.gusReporter.services.CompanyService;
 import jbosak.gus.reporter.gusReporter.services.CompanyServiceImpl;
-import jbosak.gus.reporter.gusReporter.services.SoapService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
-import org.xml.sax.SAXParseException;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
-@RestController
+@Controller
 public class MainController {
 
-//    SoapService soapService;
 
     CompanyService companyService;
 
     @Autowired
     public MainController(CompanyServiceImpl companyService) {
-//        this.soapService = soapService;
         this.companyService = companyService;
     }
 
@@ -27,11 +27,26 @@ public class MainController {
     }
 
     @GetMapping("/company/{nip}")
-    public String getCompanyDetails(@PathVariable("nip") String nip)  {
+    public ModelAndView getCompanyDetails(@PathVariable("nip") String nip){
+        ModelAndView mav = new ModelAndView("index");
         CompanyData.Company company = companyService.getCompany(nip);
-        if (company == null){
-            return "Error";
-        }
-        return company.toString();
+        mav.addObject("company", company);
+        return  mav;
     }
+
+
+
+    @GetMapping("/")
+    public ModelAndView indexPage(){
+        ModelAndView mav = new ModelAndView("index");
+        mav.addObject("nip", "0");
+        return mav;
+    }
+
+    @PostMapping("/")
+    public ModelAndView indexPage(@ModelAttribute("nip") String nip){
+        return new ModelAndView("redirect:/company/" + nip);
+    }
+
+
 }

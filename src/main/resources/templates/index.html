@@ -1,10 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <link rel="stylesheet" type="text/css" href="/index.css" />
+    <title>Gus reporter</title>
 </head>
 <body>
-$END$
+<form th:action="@{/}" th:object="${nip}" method="post" >
+<label>
+    <div>Wpisz swój NIP</div><br/>
+    <input type="number" name="nip" id="nip"  required="true" />
+</label>
+    <p>
+        <input type="submit" value="find me!" />
+    </p>
+    <div th:if="${nip != '0'}">
+    <table>
+        <thead>
+        <tr><th>NIP:</th><th th:text="${nip}"/></tr>
+        </thead>
+        <tbody th:if="${company != null}">
+        <tr><th>nazwa:</th><th th:text="${company.nazwa}"/></tr>
+        <tr><th>regon:</th><th th:text="${company.regon}"/></tr>
+        <tr><th>Wojewodztwo:</th><th th:text="${company.Wojewodztwo}"/></tr>
+        <tr><th>Powiat:</th><th th:text="${company.Powiat}"/></tr>
+        <tr><th>Gmina:</th><th th:text="${company.Gmina}"/></tr>
+        <tr><th>Miejscowosc:</th><th th:text="${company.Miejscowosc}"/></tr>
+        <tr><th>KodPocztowy:</th><th th:text="${company.KodPocztowy}"/></tr>
+        </tbody>
+    </table>
+        <span th:if="${company == null}">Nie znaleziono firmy</span>
+
+    </div>
+</form>
 </body>
 </html>
