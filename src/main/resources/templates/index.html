@@ -6,14 +6,17 @@
     <title>Gus reporter</title>
 </head>
 <body>
+<div class="root">
 <form th:action="@{/}" th:object="${nip}" method="post" >
 <label>
-    <div>Wpisz swój NIP</div><br/>
+    <div class="insert-nip-text">Wpisz swój NIP</div>
     <input type="number" name="nip" id="nip"  required="true" />
 </label>
     <p>
         <input type="submit" value="find me!" />
     </p>
+    <br/><br/>
+</form>
     <div th:if="${nip != '0'}">
     <table>
         <thead>
@@ -32,6 +35,6 @@
         <span th:if="${company == null}">Nie znaleziono firmy</span>
 
     </div>
-</form>
+</div>
 </body>
 </html>

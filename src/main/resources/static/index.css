@@ -1,9 +1,15 @@
 body{
     text-align: center;
 }
+.root{
+    display: inline-block;
+}
+.insert-nip-text{
+    text-align: left;
+}
 form{
     display: inline-block;
 }
-div{
-    float: left;
+table{
+    text-align: left;
 }
