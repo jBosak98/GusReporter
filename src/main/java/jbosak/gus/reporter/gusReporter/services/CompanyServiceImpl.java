@@ -36,6 +36,7 @@ public class CompanyServiceImpl implements CompanyService {
 
         Jaxb2Marshaller unmarshaller = (Jaxb2Marshaller) soapService.getUnmarshaller();
         CompanyData c = (CompanyData) unmarshaller.unmarshal(new StringSource(xmlResponse));
+        c.dane.setRegonLink(c.dane.getRegonLink().split(">")[1].split("<")[0]);
         return c.dane;
     }
 
